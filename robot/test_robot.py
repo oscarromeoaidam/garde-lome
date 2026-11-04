@@ -133,6 +133,10 @@ class Rapprochement(unittest.TestCase):
                   {"nom": "Pharmacie Sainte Maria", "quartier": ""}]
         self.assertEqual(robot.rapprocher([{"nom": "Pharmacie Sainte Mari"}], fiches)[0], [])
 
+    def test_numero_different_refuse(self):
+        fiches = [{"nom": "Pharmacie du 3eme Arrondissement", "quartier": ""}]
+        self.assertEqual(robot.rapprocher([{"nom": "Pharmacie 31eme Arrondissement"}], fiches)[0], [])
+
     def test_homonymes_departages_par_quartier(self):
         fiches = [{"id": "a", "nom": "Pharmacie Paix", "quartier": "Bè"},
                   {"id": "b", "nom": "Pharmacie Paix", "quartier": "Agoè"}]

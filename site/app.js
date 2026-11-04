@@ -110,8 +110,10 @@ function afficherListe() {
   }
   el("liste").replaceChildren(...pharmacies.map(carte));
   const n = pharmacies.length;
-  el("aide").textContent = n > 1 ? `${n} pharmacies de garde` : n === 1 ? "1 pharmacie de garde"
-    : "Aucune pharmacie de garde dans ce quartier. Choisissez « Tous les quartiers ».";
+  const compte = n > 1 ? `${n} pharmacies de garde` : n === 1 ? "1 pharmacie de garde" : "Aucune pharmacie de garde";
+  el("aide").textContent = choix
+    ? `${compte} indiquée(s) pour ce quartier. Regardez aussi « Tous les quartiers » : certaines adresses ne précisent pas le quartier.`
+    : compte;
 }
 
 function remplirQuartiers() {
@@ -133,7 +135,10 @@ function localiser() {
       position = { lat: pos.coords.latitude, lon: pos.coords.longitude };
       el("quartier").value = "";
       afficherListe();
-      el("aide").textContent = "Pharmacies de garde classées de la plus proche à la plus éloignée.";
+      const situees = donnees.pharmacies.filter((p) => p.lat != null).length;
+      el("aide").textContent = situees === donnees.pharmacies.length
+        ? "Pharmacies classées de la plus proche à la plus éloignée."
+        : `${situees} pharmacies sont classées par distance. Les ${donnees.pharmacies.length - situees} suivantes n'ont pas de position connue, et l'une d'elles peut être plus proche : lisez leur adresse.`;
     },
     () => { aide.textContent = "Votre position n'est pas disponible. Choisissez un quartier."; },
     { timeout: 10000, maximumAge: 300000 },

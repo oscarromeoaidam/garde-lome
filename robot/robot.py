@@ -63,11 +63,11 @@ MOTIF_PHARMACIE = re.compile(
 QUARTIERS = {
     "adetikope": "Adétikopé", "adewi": "Adéwi", "adidogome": "Adidogomé", "agbalepedogan": "Agbalépédogan",
     "agoe": "Agoè", "apedokoe": "Apédokoè", "assivito": "Assivito", "attiegou": "Attiégou",
-    "avedji": "Avédji", "baguida": "Baguida", "be": "Bè", "djagble": "Djagblé", "djidjole": "Djidjolé",
+    "avedji": "Avédji", "avedzi": "Avédji", "baguida": "Baguida", "be": "Bè", "djagble": "Djagblé", "djidjole": "Djidjolé",
     "hedzranawe": "Hédzranawoé", "hedzranawoe": "Hédzranawoé", "kegue": "Kégué", "kleme": "Klémé",
     "kodjoviakope": "Kodjoviakopé", "kpogan": "Kpogan", "legbassito": "Légbassito",
     "nyekonakpoe": "Nyékonakpoè", "sanguera": "Sanguéra", "segbe": "Ségbé", "sogbossito": "Sogbossito",
-    "t0koin": "Tokoin", "tokoin": "Tokoin",
+    "t0koin": "Tokoin", "tokoin": "Tokoin", "zongo": "Zongo",
 }
 ESSAIS_LECTURE = 3
 PAUSE_SECONDES = 20
@@ -419,8 +419,11 @@ def rapprocher(candidats, annuaire):
         deja_vus.add(cle)
         fiches = index.get(cle)
         if fiches is None:
+            chiffres = re.sub(r"\D", "", cle)
             scores = sorted(
-                ((difflib.SequenceMatcher(None, cle, c).ratio(), c) for c in cles), reverse=True
+                ((difflib.SequenceMatcher(None, cle, c).ratio(), c) for c in cles
+                 if re.sub(r"\D", "", c) == chiffres),
+                reverse=True,
             )
             if scores and scores[0][0] >= 0.88 and (
                 len(scores) == 1 or scores[0][0] - scores[1][0] >= 0.05
