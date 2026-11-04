@@ -43,6 +43,9 @@ jobs:
           git add site/data/garde.json
           git diff --cached --quiet || { git commit -m "Mise à jour de la liste de garde"; git pull --rebase; git push; }
 
+      - name: Préparer les pages pour Google
+        run: python robot/generer_seo.py
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

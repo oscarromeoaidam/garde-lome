@@ -62,6 +62,12 @@ La lecture simple suffit quand la liste est en texte et contient une phrase du t
 
 Le texte de l'IA passe par les mêmes contrôles et le même rapprochement avec l'annuaire. Vérifiez que le modèle de `robot/config.json` est toujours disponible.
 
+## Référencement sur Google
+
+À chaque lancement, `robot/generer_seo.py` écrit la liste dans le HTML, crée les pages de quartier et le sitemap.
+
+Pour vérifier le site dans Google Search Console, mettez le code de vérification dans `google_site_verification` (`robot/config.json`), puis envoyez `sitemap.xml`.
+
 ## Structure du projet
 
 | Élément | Rôle |

@@ -242,6 +242,7 @@ function localiser() {
 
 function montrerDoute(message) {
   document.body.dataset.etat = "doute";
+  el("recherche").hidden = true;
   el("statut").textContent = "Liste non confirmée";
   if (message) el("doute-texte").textContent = message;
   el("doute").hidden = false;
