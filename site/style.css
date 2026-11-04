@@ -1,15 +1,72 @@
-/* Une enseigne de pharmacie allumée dans la nuit : sa couleur indique l'état de la liste. */
+/* L'enseigne lumineuse d'une pharmacie, sur un vert profond : sa couleur indique l'état de la liste. */
+@font-face {
+  font-family: "Bricolage";
+  src: url("fonts/bricolage.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("fonts/figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
 :root {
-  --nuit: #123447;
-  --nuit-haute: #0d2838;
-  --ligne: #2f5569;
-  --texte: #f3f7f2;
-  --attenue: #b6cbd1;
-  --vert: #5fe39a;
-  --ambre: #ffc266;
-  --sur-accent: #0b2a22;
-  --eteint: #2a4b5d;
-  --allume: var(--ambre);
+  --fond: #eff6f2;
+  --surface: #ffffff;
+  --encre: #0c2b22;
+  --doux: #4b675d;
+  --trait: #d3e2da;
+  --vert: #0b7a53;
+  --sur-vert: #ffffff;
+  --menthe: #dcf0e5;
+  --sur-menthe: #0a5c40;
+  --ambre: #9a5a00;
+  --fond-ambre: #fff3dc;
+  --hero: #07402f;
+  --hero-haut: #0a5a42;
+  --hero-texte: #f2fbf6;
+  --hero-doux: #b4d8c8;
+  --led-eteinte: #0f5a44;
+  --led-verte: #6bf2ae;
+  --led-ambre: #ffc94d;
+  --allume: var(--led-ambre);
+  --titre: "Bricolage", "Avenir Next", "Segoe UI", Roboto, sans-serif;
+  --corps: "Figtree", "Avenir Next", "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fond: #06211a;
+    --surface: #0c2e25;
+    --encre: #e8f5ee;
+    --doux: #a2c0b3;
+    --trait: #1d463a;
+    --vert: #43d195;
+    --sur-vert: #05261c;
+    --menthe: #123f32;
+    --sur-menthe: #8fe6be;
+    --ambre: #ffc94d;
+    --fond-ambre: #33290f;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --fond: #06211a;
+  --surface: #0c2e25;
+  --encre: #e8f5ee;
+  --doux: #a2c0b3;
+  --trait: #1d463a;
+  --vert: #43d195;
+  --sur-vert: #05261c;
+  --menthe: #123f32;
+  --sur-menthe: #8fe6be;
+  --ambre: #ffc94d;
+  --fond-ambre: #33290f;
   color-scheme: dark;
 }
 
@@ -19,160 +76,335 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--nuit);
-  color: var(--texte);
-  font-family: "Avenir Next", "Segoe UI", Roboto, "Noto Sans", Helvetica, Arial, sans-serif;
-  font-size: 1.0625rem;
+  background: var(--fond);
+  color: var(--encre);
+  font-family: var(--corps);
+  font-size: 1rem;
   line-height: 1.5;
 }
 
-body[data-etat="confirme"] { --allume: var(--vert); }
-body[data-etat="chargement"] { --allume: var(--eteint); }
+body[data-etat="confirme"] { --allume: var(--led-verte); }
+body[data-etat="chargement"] { --allume: var(--led-eteinte); }
 
-.enseigne {
-  background: var(--nuit-haute);
-  padding-block: 28px;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
+.sprite { position: absolute; }
+
+.invisible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
-.enseigne-interieur,
+.icone { width: 1.2em; height: 1.2em; flex: none; }
+
+.hero {
+  background: radial-gradient(120% 140% at 85% 0%, var(--hero-haut), var(--hero) 62%);
+  color: var(--hero-texte);
+  padding-block: 28px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow: hidden;
+}
+
+.hero-interieur,
 main,
 footer {
-  max-width: 44rem;
+  max-width: 68rem;
   margin-inline: auto;
 }
 
-.enseigne-interieur {
-  display: flex;
+.hero-interieur {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 22px;
+  gap: 16px;
 }
 
-.titre { min-width: 0; }
+.marque {
+  margin: 0 0 18px;
+  font-family: var(--titre);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--allume);
+}
+
+body[data-etat="chargement"] .marque { color: var(--hero-doux); }
 
 h1 {
-  margin: 0 0 6px;
-  font-size: clamp(1.75rem, 6.5vw, 2.5rem);
-  line-height: 1.1;
-  font-weight: 700;
-  letter-spacing: -0.015em;
+  max-width: 11em;
+  margin: 0 0 14px;
+  font-family: var(--titre);
+  font-size: clamp(2.35rem, 9.5vw, 4.75rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
-#statut { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--allume); }
-body[data-etat="chargement"] #statut { color: var(--attenue); }
-.maj { margin: 2px 0 0; font-size: 0.9375rem; color: var(--attenue); }
-
-.croix {
-  flex: none;
-  display: grid;
-  grid-template: repeat(9, 1fr) / repeat(9, 1fr);
-  gap: 3px;
-  width: 96px;
-  height: 96px;
+#statut {
+  margin: 0;
+  font-size: clamp(1.1rem, 3.6vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.25;
+  text-wrap: balance;
 }
 
-.croix span { border-radius: 50%; background: var(--eteint); }
+.maj { margin: 6px 0 0; font-size: 0.9rem; color: var(--hero-doux); }
+
+.croix {
+  display: grid;
+  grid-template: repeat(11, 1fr) / repeat(11, 1fr);
+  gap: 5%;
+  width: clamp(104px, 27vw, 250px);
+  aspect-ratio: 1;
+  max-width: 100%;
+  margin-right: -6px;
+}
+
+.croix span { border-radius: 50%; background: var(--led-eteinte); }
 
 .croix span.led {
   background: var(--allume);
-  box-shadow: 0 0 7px var(--allume);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--allume) 75%, transparent);
 }
 
 main {
-  padding-block: 20px 12px;
+  padding-block: 0 20px;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
 
-.demo,
-.doute { border: 2px solid var(--ambre); border-radius: 6px; padding: 12px 14px; }
-
-.demo { margin: 0 0 18px; font-weight: 600; }
-.doute { margin: 0; }
-.doute h2 { margin: 0 0 6px; font-size: 1.25rem; color: var(--ambre); }
-.doute p { margin: 8px 0 0; }
-
-.filtres { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; }
-.champ { flex: 1 1 13rem; min-width: 0; }
-
-label { display: block; margin-bottom: 4px; font-size: 0.9375rem; color: var(--attenue); }
-
-select,
-.bouton {
-  min-height: 48px;
-  border-radius: 6px;
-  font: inherit;
-  font-weight: 600;
+.alerte,
+.doute {
+  position: relative;
+  border-radius: 14px;
+  background: var(--fond-ambre);
+  color: var(--encre);
+  padding: 14px 16px;
 }
 
-select {
-  width: 100%;
-  padding: 0 10px;
-  color: var(--texte);
-  background: var(--nuit-haute);
-  border: 1px solid var(--ligne);
+.alerte { margin: -40px 0 52px; font-weight: 600; }
+.alerte + .doute { margin-top: -36px; }
+.doute { margin: -40px 0 0; }
+.doute h2 { margin: 0 0 6px; font-family: var(--titre); font-size: 1.4rem; line-height: 1.2; color: var(--ambre); }
+.doute p { margin: 8px 0 0; }
+
+.barre {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  display: grid;
+  gap: 10px;
+  margin-top: -40px;
+  padding: 12px;
+  border: 1px solid var(--trait);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 10px 28px -14px rgb(7 64 47 / 45%);
+}
+
+.alerte:not([hidden]) { margin-bottom: 14px; }
+.alerte:not([hidden]) ~ #recherche .barre { margin-top: 0; }
+
+.ligne-recherche { display: flex; gap: 8px; }
+
+.champ {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding-inline: 12px;
+  border: 1px solid var(--trait);
+  border-radius: 12px;
+  background: var(--fond);
+  color: var(--doux);
+}
+
+.champ:focus-within { border-color: var(--vert); outline: 2px solid var(--vert); outline-offset: -1px; }
+
+input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--encre);
+  font: inherit;
+  font-size: 1rem;
+}
+
+input::placeholder { color: var(--doux); opacity: 1; }
+
+.bouton-proche {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 48px;
+  padding-inline: 14px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--menthe);
+  color: var(--sur-menthe);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bouton-proche[aria-pressed="true"] { background: var(--vert); color: var(--sur-vert); }
+
+.quartiers {
+  display: flex;
+  gap: 6px;
+  margin-inline: -12px;
+  padding: 2px 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.quartiers::-webkit-scrollbar { display: none; }
+
+.puce {
+  flex: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--trait);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--encre);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.puce small { font-size: 0.8125rem; font-weight: 500; color: var(--doux); font-variant-numeric: tabular-nums; }
+.puce[aria-pressed="true"] { border-color: var(--vert); background: var(--vert); color: var(--sur-vert); }
+.puce[aria-pressed="true"] small { color: inherit; }
+
+:is(a, button):focus-visible { outline: 3px solid var(--vert); outline-offset: 2px; }
+
+.aide { margin: 16px 2px 10px; font-size: 0.9375rem; color: var(--doux); }
+
+.liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pharmacie {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--trait);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.pharmacie-tete { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+
+.pharmacie h2 {
+  min-width: 0;
+  margin: 0;
+  font-family: var(--titre);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.distance { flex: none; margin: 0; font-weight: 700; color: var(--vert); font-variant-numeric: tabular-nums; }
+
+.etiquette {
+  align-self: flex-start;
+  margin: 8px 0 0;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--menthe);
+  color: var(--sur-menthe);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.lieu { margin: 8px 0 14px; color: var(--doux); overflow-wrap: anywhere; }
+.a-verifier { margin: 0 0 14px; color: var(--ambre); font-size: 0.9375rem; }
+
+.actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  margin-top: auto;
 }
 
 .bouton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 16px;
-  border: 0;
+  gap: 8px;
+  min-height: 46px;
+  padding-inline: 14px;
+  border-radius: 12px;
+  font-weight: 700;
   text-decoration: none;
+  white-space: nowrap;
+}
+
+.bouton.principal { background: var(--vert); color: var(--sur-vert); font-variant-numeric: tabular-nums; }
+.bouton.secondaire { border: 1px solid var(--trait); background: transparent; color: var(--encre); }
+.bouton.absent { background: var(--fond); color: var(--doux); font-weight: 500; }
+.bouton[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
+
+.vide { grid-column: 1 / -1; padding: 28px 16px; text-align: center; color: var(--doux); }
+
+.vide button {
+  margin-top: 10px;
+  min-height: 44px;
+  padding-inline: 16px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--menthe);
+  color: var(--sur-menthe);
+  font: inherit;
+  font-weight: 700;
   cursor: pointer;
 }
 
-.bouton.principal { color: var(--sur-accent); background: var(--vert); }
-
-.bouton.secondaire {
-  color: var(--texte);
-  background: transparent;
-  border: 1px solid var(--attenue);
+.conseil {
+  margin: 20px 0 0;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--menthe);
+  color: var(--sur-menthe);
+  font-weight: 600;
 }
-
-.bouton[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
-
-:is(a, button, select):focus-visible { outline: 3px solid var(--texte); outline-offset: 2px; }
-
-.aide { min-height: 1.5em; margin: 12px 0 4px; font-size: 0.9375rem; color: var(--attenue); }
-
-.liste { margin: 0; padding: 0; list-style: none; }
-
-.pharmacie {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 4px 16px;
-  padding-block: 16px;
-  border-top: 1px solid var(--ligne);
-}
-
-.pharmacie h2 { margin: 0; font-size: 1.25rem; line-height: 1.25; overflow-wrap: anywhere; }
-.pharmacie p { margin: 0; overflow-wrap: anywhere; }
-.lieu { color: var(--attenue); }
-.telephone { font-variant-numeric: tabular-nums; }
-.a-verifier { color: var(--ambre); }
-.distance { font-variant-numeric: tabular-nums; color: var(--vert); font-weight: 600; white-space: nowrap; }
-
-.actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
-.actions .bouton { flex: 1 1 8rem; }
-
-.conseil { margin: 8px 0 0; padding-top: 14px; border-top: 1px solid var(--ligne); font-weight: 600; }
 
 footer {
-  padding-block: 12px 28px;
+  padding-block: 8px 28px;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
   font-size: 0.875rem;
-  color: var(--attenue);
+  color: var(--doux);
 }
 
 footer p { margin: 0; }
-footer a { color: var(--texte); }
+footer a { color: inherit; }
 
-@media (max-width: 26rem) {
-  .enseigne-interieur { gap: 16px; }
-  .croix { width: 72px; height: 72px; gap: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  body[data-etat="confirme"] .croix span.led { animation: allumage 0.7s ease-out both; }
+}
+
+@keyframes allumage {
+  from { background: var(--led-eteinte); box-shadow: none; }
 }
