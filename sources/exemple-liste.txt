@@ -1,0 +1,9 @@
+ORDRE FICTIF DES PHARMACIENS - DOCUMENT DE DEMONSTRATION
+Pharmacies de garde de Lomé du {{DEBUT}} au {{FIN}}
+
+Bè : Pharmacie Exemple Alizé
+Tokoin : Pharmacie Exemple Baobab
+Agoè : Pharmacie Exemple Cauris
+Adidogomé : Pharmacie Exemple Dunes
+Kégué : Pharmacie Exemple Émeraude
+Baguida : Pharmacie Exemple Filao

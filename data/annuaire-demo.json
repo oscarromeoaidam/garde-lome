@@ -1,0 +1,14 @@
+{
+  "source": "Annuaire fictif de démonstration",
+  "licence": "",
+  "pharmacies": [
+    {"id": "demo-1", "nom": "Pharmacie Exemple Alizé", "quartier": "Bè", "adresse": "Adresse fictive 1", "telephone": "+228 00 00 00 01", "lat": 6.135, "lon": 1.243},
+    {"id": "demo-2", "nom": "Pharmacie Exemple Baobab", "quartier": "Tokoin", "adresse": "Adresse fictive 2", "telephone": "+228 00 00 00 02", "lat": 6.158, "lon": 1.215},
+    {"id": "demo-3", "nom": "Pharmacie Exemple Cauris", "quartier": "Agoè", "adresse": "Adresse fictive 3", "telephone": "+228 00 00 00 03", "lat": 6.215, "lon": 1.210},
+    {"id": "demo-4", "nom": "Pharmacie Exemple Dunes", "quartier": "Adidogomé", "adresse": "Adresse fictive 4", "telephone": "+228 00 00 00 04", "lat": 6.190, "lon": 1.165},
+    {"id": "demo-5", "nom": "Pharmacie Exemple Émeraude", "quartier": "Kégué", "adresse": "Adresse fictive 5", "telephone": "+228 00 00 00 05", "lat": 6.175, "lon": 1.255},
+    {"id": "demo-6", "nom": "Pharmacie Exemple Filao", "quartier": "Baguida", "adresse": "Adresse fictive 6", "telephone": "+228 00 00 00 06", "lat": 6.160, "lon": 1.330},
+    {"id": "demo-7", "nom": "Pharmacie Exemple Gazelle", "quartier": "Nyékonakpoè", "adresse": "Adresse fictive 7", "telephone": "+228 00 00 00 07", "lat": 6.130, "lon": 1.210},
+    {"id": "demo-8", "nom": "Pharmacie Exemple Hibiscus", "quartier": "Hédzranawoé", "adresse": "Adresse fictive 8", "telephone": "+228 00 00 00 08", "lat": 6.170, "lon": 1.235}
+  ]
+}

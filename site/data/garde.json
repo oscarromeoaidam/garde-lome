@@ -1,0 +1,66 @@
+{
+  "demo": true,
+  "source": "Liste d'exemple",
+  "licence_annuaire": "",
+  "verifie_le": "2026-11-04T12:00:17+00:00",
+  "statut": "confirme",
+  "debut": "2026-11-04",
+  "fin": "2026-11-10",
+  "mise_a_jour_le": "2026-11-04T11:54:51+00:00",
+  "pharmacies": [
+    {
+      "id": "demo-1",
+      "nom": "Pharmacie Exemple Alizé",
+      "quartier": "Bè",
+      "adresse": "Adresse fictive 1",
+      "telephone": "+228 00 00 00 01",
+      "lat": 6.135,
+      "lon": 1.243
+    },
+    {
+      "id": "demo-2",
+      "nom": "Pharmacie Exemple Baobab",
+      "quartier": "Tokoin",
+      "adresse": "Adresse fictive 2",
+      "telephone": "+228 00 00 00 02",
+      "lat": 6.158,
+      "lon": 1.215
+    },
+    {
+      "id": "demo-3",
+      "nom": "Pharmacie Exemple Cauris",
+      "quartier": "Agoè",
+      "adresse": "Adresse fictive 3",
+      "telephone": "+228 00 00 00 03",
+      "lat": 6.215,
+      "lon": 1.21
+    },
+    {
+      "id": "demo-4",
+      "nom": "Pharmacie Exemple Dunes",
+      "quartier": "Adidogomé",
+      "adresse": "Adresse fictive 4",
+      "telephone": "+228 00 00 00 04",
+      "lat": 6.19,
+      "lon": 1.165
+    },
+    {
+      "id": "demo-5",
+      "nom": "Pharmacie Exemple Émeraude",
+      "quartier": "Kégué",
+      "adresse": "Adresse fictive 5",
+      "telephone": "+228 00 00 00 05",
+      "lat": 6.175,
+      "lon": 1.255
+    },
+    {
+      "id": "demo-6",
+      "nom": "Pharmacie Exemple Filao",
+      "quartier": "Baguida",
+      "adresse": "Adresse fictive 6",
+      "telephone": "+228 00 00 00 06",
+      "lat": 6.16,
+      "lon": 1.33
+    }
+  ]
+}

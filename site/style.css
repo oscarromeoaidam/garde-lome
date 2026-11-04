@@ -1,0 +1,177 @@
+/* Une enseigne de pharmacie allumée dans la nuit : sa couleur indique l'état de la liste. */
+:root {
+  --nuit: #123447;
+  --nuit-haute: #0d2838;
+  --ligne: #2f5569;
+  --texte: #f3f7f2;
+  --attenue: #b6cbd1;
+  --vert: #5fe39a;
+  --ambre: #ffc266;
+  --sur-accent: #0b2a22;
+  --eteint: #2a4b5d;
+  --allume: var(--ambre);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--nuit);
+  color: var(--texte);
+  font-family: "Avenir Next", "Segoe UI", Roboto, "Noto Sans", Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+body[data-etat="confirme"] { --allume: var(--vert); }
+body[data-etat="chargement"] { --allume: var(--eteint); }
+
+.enseigne {
+  background: var(--nuit-haute);
+  padding-block: 28px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.enseigne-interieur,
+main,
+footer {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.enseigne-interieur {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.titre { min-width: 0; }
+
+h1 {
+  margin: 0 0 6px;
+  font-size: clamp(1.75rem, 6.5vw, 2.5rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+#statut { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--allume); }
+body[data-etat="chargement"] #statut { color: var(--attenue); }
+.maj { margin: 2px 0 0; font-size: 0.9375rem; color: var(--attenue); }
+
+.croix {
+  flex: none;
+  display: grid;
+  grid-template: repeat(9, 1fr) / repeat(9, 1fr);
+  gap: 3px;
+  width: 96px;
+  height: 96px;
+}
+
+.croix span { border-radius: 50%; background: var(--eteint); }
+
+.croix span.led {
+  background: var(--allume);
+  box-shadow: 0 0 7px var(--allume);
+}
+
+main {
+  padding-block: 20px 12px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.demo,
+.doute { border: 2px solid var(--ambre); border-radius: 6px; padding: 12px 14px; }
+
+.demo { margin: 0 0 18px; font-weight: 600; }
+.doute { margin: 0; }
+.doute h2 { margin: 0 0 6px; font-size: 1.25rem; color: var(--ambre); }
+.doute p { margin: 8px 0 0; }
+
+.filtres { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; }
+.champ { flex: 1 1 13rem; min-width: 0; }
+
+label { display: block; margin-bottom: 4px; font-size: 0.9375rem; color: var(--attenue); }
+
+select,
+.bouton {
+  min-height: 48px;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 600;
+}
+
+select {
+  width: 100%;
+  padding: 0 10px;
+  color: var(--texte);
+  background: var(--nuit-haute);
+  border: 1px solid var(--ligne);
+}
+
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bouton.principal { color: var(--sur-accent); background: var(--vert); }
+
+.bouton.secondaire {
+  color: var(--texte);
+  background: transparent;
+  border: 1px solid var(--attenue);
+}
+
+.bouton[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
+
+:is(a, button, select):focus-visible { outline: 3px solid var(--texte); outline-offset: 2px; }
+
+.aide { min-height: 1.5em; margin: 12px 0 4px; font-size: 0.9375rem; color: var(--attenue); }
+
+.liste { margin: 0; padding: 0; list-style: none; }
+
+.pharmacie {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 16px;
+  padding-block: 16px;
+  border-top: 1px solid var(--ligne);
+}
+
+.pharmacie h2 { margin: 0; font-size: 1.25rem; line-height: 1.25; overflow-wrap: anywhere; }
+.pharmacie p { margin: 0; overflow-wrap: anywhere; }
+.lieu { color: var(--attenue); }
+.telephone { font-variant-numeric: tabular-nums; }
+.a-verifier { color: var(--ambre); }
+.distance { font-variant-numeric: tabular-nums; color: var(--vert); font-weight: 600; white-space: nowrap; }
+
+.actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.actions .bouton { flex: 1 1 8rem; }
+
+.conseil { margin: 8px 0 0; padding-top: 14px; border-top: 1px solid var(--ligne); font-weight: 600; }
+
+footer {
+  padding-block: 12px 28px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  font-size: 0.875rem;
+  color: var(--attenue);
+}
+
+footer p { margin: 0; }
+
+@media (max-width: 26rem) {
+  .enseigne-interieur { gap: 16px; }
+  .croix { width: 72px; height: 72px; gap: 2px; }
+}

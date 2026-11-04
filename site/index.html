@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Garde Lomé</title>
+<meta name="description" content="Trouvez les pharmacies de garde à Lomé par quartier ou près de vous.">
+<meta name="theme-color" content="#123447">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-etat="chargement">
+<header class="enseigne">
+  <div class="enseigne-interieur">
+    <div class="croix" id="croix" aria-hidden="true"></div>
+    <div class="titre">
+      <h1>Pharmacies de garde à Lomé</h1>
+      <p id="statut" role="status">Chargement de la liste…</p>
+      <p id="maj" class="maj"></p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <p id="demo" class="demo" hidden>Démonstration : ces pharmacies sont fictives. Ne vous en servez pas pour trouver une vraie pharmacie.</p>
+
+  <section id="doute" class="doute" hidden>
+    <h2>Liste non confirmée</h2>
+    <p id="doute-texte">La liste de garde de cette période n'a pas pu être confirmée. Aucune pharmacie n'est affichée pour éviter de vous envoyer vers une officine fermée.</p>
+    <p>En cas d'urgence, contactez un hôpital ou appelez une pharmacie proche pour connaître celle qui est de garde.</p>
+  </section>
+
+  <section id="recherche" hidden>
+    <div class="filtres">
+      <div class="champ">
+        <label for="quartier">Quartier</label>
+        <select id="quartier"></select>
+      </div>
+      <button id="proche" type="button" class="bouton secondaire">Les plus proches de moi</button>
+    </div>
+    <p id="aide" class="aide" role="status"></p>
+    <ul id="liste" class="liste"></ul>
+    <p class="conseil">Appelez avant de vous déplacer : une garde peut changer au dernier moment.</p>
+  </section>
+</main>
+
+<footer>
+  <p id="credits"></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

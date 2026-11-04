@@ -1,0 +1,18 @@
+{
+  "demo": true,
+  "source": {
+    "nom": "Liste d'exemple",
+    "url": "",
+    "fichier": "sources/exemple-liste.txt"
+  },
+  "controles": {
+    "min_pharmacies": 3,
+    "max_pharmacies": 60,
+    "duree_max_jours": 14,
+    "max_inconnues_pct": 10,
+    "variation_max_pct": 50
+  },
+  "ia": {
+    "modele": "claude-haiku-5-5"
+  }
+}
