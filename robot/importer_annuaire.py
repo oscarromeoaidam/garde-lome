@@ -3,6 +3,7 @@
 import argparse
 import json
 import sys
+import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -12,7 +13,9 @@ from robot import ecrire_json, normaliser
 RACINE = Path(__file__).resolve().parent.parent
 SORTIE = RACINE / "data" / "annuaire.json"
 COMPLEMENTS = RACINE / "data" / "annuaire-complements.json"
-OVERPASS = "https://overpass-api.de/api/interpreter"
+SERVEURS = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"]
+ESSAIS = 3
+PAUSE_SECONDES = 30
 REQUETE = (
     '[out:json][timeout:60];area["ISO3166-1"="TG"]->.togo;'
     'nwr["amenity"="pharmacy"](6.10,1.08,6.32,1.36)(area.togo);out center tags;'
@@ -22,11 +25,18 @@ MINIMUM = 10
 
 def telecharger():
     corps = urllib.parse.urlencode({"data": REQUETE}).encode()
-    demande = urllib.request.Request(
-        OVERPASS, data=corps, headers={"User-Agent": "garde-lome-robot"}
-    )
-    with urllib.request.urlopen(demande, timeout=120) as reponse:
-        return json.load(reponse)
+    for essai in range(1, ESSAIS + 1):
+        for serveur in SERVEURS:
+            demande = urllib.request.Request(
+                serveur, data=corps, headers={"User-Agent": "garde-lome-robot"}
+            )
+            try:
+                with urllib.request.urlopen(demande, timeout=120) as reponse:
+                    return json.load(reponse)
+            except (OSError, ValueError) as erreur:
+                print(f"Essai {essai} sur {serveur} : {erreur}")
+        time.sleep(PAUSE_SECONDES)
+    raise RuntimeError("OpenStreetMap ne répond pas.")
 
 
 def convertir(element):
