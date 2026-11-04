@@ -170,6 +170,7 @@ footer {
 }
 
 footer p { margin: 0; }
+footer a { color: var(--texte); }
 
 @media (max-width: 26rem) {
   .enseigne-interieur { gap: 16px; }

@@ -6,9 +6,9 @@ Vous n'avez rien à installer. GitHub lance le robot chaque jour et héberge le 
 
 ## Comment ça marche
 
-1. Chaque jour à 6 h 17, le robot lit la source indiquée dans `robot/config.json`.
+1. Chaque jour à 6 h 17, 12 h 17 et 18 h 17, le robot lit la page des pharmacies de garde de l'INAM.
 2. Il trouve la période de garde et les pharmacies. Si la lecture simple échoue et qu'une clé IA existe, il utilise l'IA.
-3. Il relie chaque nom à une fiche de `data/annuaire.json`.
+3. Il garde le téléphone et l'adresse de l'INAM, et cherche la position GPS dans `data/annuaire.json`.
 4. Il contrôle la date, le nombre de pharmacies et les noms inconnus.
 5. Si tout est bon, il publie `site/data/garde.json`.
 
@@ -26,7 +26,7 @@ En cas de problème :
 4. Allez dans l'onglet Actions, ouvrez **Mise à jour des gardes**, puis cliquez sur **Run workflow**.
 5. Quand le lancement est vert, votre site est à l'adresse `https://VOTRE-NOM.github.io/garde-lome/`.
 
-Le site tourne alors en démonstration, avec des pharmacies fictives et un bandeau d'avertissement.
+Le site lit alors la vraie liste de l'INAM. Pour revenir aux données fictives, mettez `"demo": true` dans `robot/config.json`.
 
 ## Passer aux vraies données
 

@@ -14,6 +14,7 @@ import os
 import re
 import sys
 import tempfile
+import time
 import unicodedata
 import urllib.request
 from html.parser import HTMLParser
@@ -44,6 +45,12 @@ MOTIF_PERIODE = re.compile(
     rf"(?P<j2>\d{{1,2}})(?:er)?\s+(?P<m2>{MOTIF_MOIS})(?:\s+(?P<a2>\d{{4}}))?",
     re.IGNORECASE,
 )
+# La page de l'INAM écrit par exemple « du octobre 02 au 09 novembre 2026 ».
+MOTIF_PERIODE_INVERSEE = re.compile(
+    rf"\bdu\s+(?P<m1>{MOTIF_MOIS})\s+(?P<j1>\d{{1,2}})\s+au\s+"
+    rf"(?P<j2>\d{{1,2}})\s+(?P<m2>{MOTIF_MOIS})\s+(?P<a2>\d{{4}})",
+    re.IGNORECASE,
+)
 MOTIF_PERIODE_CHIFFRES = re.compile(
     r"\bdu\s+(\d{1,2})/(\d{1,2})/(\d{4})\s+au\s+(\d{1,2})/(\d{1,2})/(\d{4})", re.IGNORECASE
 )
@@ -53,9 +60,23 @@ MOTIF_PHARMACIE = re.compile(
 )
 
 
+QUARTIERS = {
+    "adetikope": "Adétikopé", "adewi": "Adéwi", "adidogome": "Adidogomé", "agbalepedogan": "Agbalépédogan",
+    "agoe": "Agoè", "apedokoe": "Apédokoè", "assivito": "Assivito", "attiegou": "Attiégou",
+    "avedji": "Avédji", "baguida": "Baguida", "be": "Bè", "djagble": "Djagblé", "djidjole": "Djidjolé",
+    "hedzranawe": "Hédzranawoé", "hedzranawoe": "Hédzranawoé", "kegue": "Kégué", "kleme": "Klémé",
+    "kodjoviakope": "Kodjoviakopé", "kpogan": "Kpogan", "legbassito": "Légbassito",
+    "nyekonakpoe": "Nyékonakpoè", "sanguera": "Sanguéra", "segbe": "Ségbé", "sogbossito": "Sogbossito",
+    "t0koin": "Tokoin", "tokoin": "Tokoin",
+}
+ESSAIS_LECTURE = 3
+PAUSE_SECONDES = 20
+
+
 @dataclasses.dataclass
 class Document:
     texte: str = ""
+    lignes: list = dataclasses.field(default_factory=list)
     fichier: bytes = b""
     type_media: str = ""
 
@@ -109,26 +130,41 @@ class LecteurHtml(HTMLParser):
         super().__init__()
         self.morceaux = []
         self.profondeur_ignoree = 0
+        self.lignes = []
+        self.cellule = None
 
     def handle_starttag(self, tag, attrs):
         if tag in self.IGNORES:
             self.profondeur_ignoree += 1
         if tag in self.BLOCS:
             self.morceaux.append("\n")
+        if tag == "tr":
+            self.lignes.append([])
+        if tag in {"td", "th"} and self.lignes:
+            self.cellule = []
 
     def handle_endtag(self, tag):
         if tag in self.IGNORES and self.profondeur_ignoree:
             self.profondeur_ignoree -= 1
+        if tag in {"td", "th"} and self.cellule is not None:
+            self.lignes[-1].append(" ".join("".join(self.cellule).split()))
+            self.cellule = None
 
     def handle_data(self, data):
         if not self.profondeur_ignoree:
             self.morceaux.append(data)
+            if self.cellule is not None:
+                self.cellule.append(data)
+
+
+def lire_html(contenu):
+    lecteur = LecteurHtml()
+    lecteur.feed(contenu)
+    return lecteur
 
 
 def html_vers_texte(contenu):
-    lecteur = LecteurHtml()
-    lecteur.feed(contenu)
-    return html.unescape("".join(lecteur.morceaux))
+    return html.unescape("".join(lire_html(contenu).morceaux))
 
 
 def pdf_vers_texte(contenu):
@@ -149,7 +185,8 @@ def decoder(contenu, type_media, nom=""):
         return Document("", contenu, media)
     texte = contenu.decode("utf-8", errors="replace")
     if "html" in type_media or nom.endswith((".html", ".htm")):
-        texte = html_vers_texte(texte)
+        lecteur = lire_html(texte)
+        return Document("".join(lecteur.morceaux), lecteur.lignes)
     return Document(texte)
 
 
@@ -161,8 +198,15 @@ def lire_source(config, aujourdhui):
     source = config["source"]
     if source.get("url"):
         demande = urllib.request.Request(source["url"], headers={"User-Agent": "garde-lome-robot"})
-        with urllib.request.urlopen(demande, timeout=60) as reponse:
-            return decoder(reponse.read(), reponse.headers.get_content_type(), source["url"])
+        for essai in range(1, ESSAIS_LECTURE + 1):
+            try:
+                with urllib.request.urlopen(demande, timeout=120) as reponse:
+                    return decoder(reponse.read(), reponse.headers.get_content_type(), source["url"])
+            except OSError as erreur:
+                print(f"Essai {essai} de lecture de la source : {erreur}")
+                if essai == ESSAIS_LECTURE:
+                    raise
+                time.sleep(PAUSE_SECONDES)
     if source.get("fichier"):
         chemin = RACINE / source["fichier"]
         document = decoder(chemin.read_bytes(), "", chemin.name)
@@ -192,6 +236,19 @@ def trouver_periodes(texte, aujourdhui):
         fin = construire_date(annee_fin, mois_fin, m["j2"])
         if debut and fin:
             periodes.append((m.start(), debut, fin))
+    for m in MOTIF_PERIODE_INVERSEE.finditer(texte):
+        fin = construire_date(m["a2"], MOIS[normaliser(m["m2"])], m["j2"])
+        if not fin:
+            continue
+        mois_debut = MOIS[normaliser(m["m1"])]
+        annee_debut = fin.year - 1 if mois_debut > fin.month else fin.year
+        debut = construire_date(annee_debut, mois_debut, m["j1"])
+        if not debut or (fin - debut).days > 14:
+            # Le mois de début écrit donne une durée impossible : il n'a pas été mis à jour.
+            debut = construire_date(fin.year, fin.month, m["j1"])
+            print(f"Période à lire avec prudence : « {' '.join(m[0].split())} » comprise du {debut} au {fin}.")
+        if debut:
+            periodes.append((m.start(), debut, fin))
     for m in MOTIF_PERIODE_CHIFFRES.finditer(texte):
         debut = construire_date(m[3], m[2], m[1])
         fin = construire_date(m[6], m[5], m[4])
@@ -220,6 +277,70 @@ def extraire_sans_ia(texte, aujourdhui):
         if nom and not normaliser(nom).startswith("de garde"):
             candidats.append({"nom": f"Pharmacie {nom}", "quartier": ""})
     return Liste(debut, fin, candidats)
+
+
+def extraire_tableau(lignes):
+    """Lit un tableau dont l'en-tête annonce les pharmacies, téléphones et emplacements."""
+    for rang, entete in enumerate(lignes):
+        colonnes = [normaliser(c) for c in entete]
+        if not {"pharmacies", "telephones", "emplacements"} <= set(colonnes):
+            continue
+        nom, tel, lieu = (colonnes.index(c) for c in ("pharmacies", "telephones", "emplacements"))
+        derniere = max(nom, tel, lieu)
+        return [
+            {"nom": l[nom], "telephone": l[tel], "adresse": l[lieu], "quartier": ""}
+            for l in lignes[rang + 1:] if len(l) > derniere and l[nom]
+        ]
+    return []
+
+
+def nom_lisible(nom):
+    mots = nom.lower().split()
+    petits = {"de", "du", "des", "la", "le", "les"}
+    return " ".join(
+        m if m in petits and i else m[:1].upper() + m[1:] for i, m in enumerate(mots)
+    )
+
+
+def normaliser_telephone(telephone):
+    """Renvoie un numéro togolais complet, ou rien : mieux vaut aucun numéro qu'un faux."""
+    chiffres = re.sub(r"\D", "", re.sub(r"[oO]", "0", telephone))
+    if len(chiffres) == 11 and chiffres.startswith("228"):
+        chiffres = chiffres[3:]
+    if len(chiffres) != 8:
+        return ""
+    return "+228 " + " ".join(chiffres[i:i + 2] for i in range(0, 8, 2))
+
+
+def deviner_quartier(adresse):
+    texte = normaliser(adresse)
+    positions = [(m.start(), nom) for cle, nom in QUARTIERS.items()
+                 for m in re.finditer(rf"\b{cle}\b", texte)]
+    return min(positions)[1] if positions else ""
+
+
+def construire_fiches(candidats, annuaire):
+    """Une ligne complète de la source fait foi. L'annuaire n'ajoute que la position GPS."""
+    fiches, restants, deja_vus = [], [], set()
+    for candidat in candidats:
+        if not candidat.get("adresse"):
+            restants.append(candidat)
+            continue
+        cle = cle_nom(candidat["nom"])
+        if cle in deja_vus:
+            continue
+        deja_vus.add(cle)
+        lieu = next(iter(rapprocher([candidat], annuaire)[0]), {})
+        fiches.append({
+            "nom": nom_lisible(candidat["nom"]),
+            "quartier": deviner_quartier(candidat["adresse"]) or lieu.get("quartier", ""),
+            "adresse": candidat["adresse"],
+            "telephone": normaliser_telephone(candidat.get("telephone", "")),
+            "lat": lieu.get("lat"),
+            "lon": lieu.get("lon"),
+        })
+    trouvees, inconnues = rapprocher(restants, annuaire)
+    return fiches + trouvees, inconnues
 
 
 CONSIGNE_IA = """Tu extrais une liste de pharmacies de garde à Lomé depuis un document.
@@ -346,13 +467,14 @@ def fiche_inconnue(candidat):
 def obtenir_liste(config, annuaire, precedente, aujourdhui):
     document = lire_source(config, aujourdhui)
     liste = extraire_sans_ia(document.texte, aujourdhui)
-    trouvees, inconnues = rapprocher(liste.candidats, annuaire)
+    liste.candidats = extraire_tableau(document.lignes) or liste.candidats
+    trouvees, inconnues = construire_fiches(liste.candidats, annuaire)
     erreurs = controler(liste, trouvees, inconnues, aujourdhui, config["controles"], precedente)
     cle = os.environ.get("ANTHROPIC_API_KEY")
     if erreurs and cle:
         print("Lecture simple insuffisante, passage à l'IA.")
         liste = extraire_ia(document, aujourdhui, config, cle)
-        trouvees, inconnues = rapprocher(liste.candidats, annuaire)
+        trouvees, inconnues = construire_fiches(liste.candidats, annuaire)
         erreurs = controler(liste, trouvees, inconnues, aujourdhui, config["controles"], precedente)
     return liste, trouvees, inconnues, erreurs
 
@@ -362,6 +484,7 @@ def publier(config, annuaire_complet, precedente, aujourdhui, maintenant):
     base = {
         "demo": bool(config.get("demo")),
         "source": config["source"].get("nom", ""),
+        "source_url": config["source"].get("url", ""),
         "licence_annuaire": annuaire_complet.get("licence", ""),
         "verifie_le": maintenant,
     }

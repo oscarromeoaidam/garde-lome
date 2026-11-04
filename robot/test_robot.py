@@ -65,6 +65,61 @@ class Dates(unittest.TestCase):
         self.assertEqual(robot.trouver_periodes("du 31 au 32 novembre 2026", AUJ), [])
 
 
+    def test_mois_de_debut_oublie(self):
+        self.assertEqual(self.periode("Liste des pharmacies du octobre 02 au 09 novembre 2026"),
+                         (dt.date(2026, 11, 2), dt.date(2026, 11, 9)))
+
+    def test_ordre_inverse_sur_deux_mois(self):
+        self.assertEqual(self.periode("du octobre 26 au 02 novembre 2026"),
+                         (dt.date(2026, 10, 26), dt.date(2026, 11, 2)))
+
+    def test_ordre_inverse_sur_deux_annees(self):
+        self.assertEqual(self.periode("du décembre 28 au 04 janvier 2027"),
+                         (dt.date(2026, 12, 28), dt.date(2027, 1, 4)))
+
+
+class PageInam(unittest.TestCase):
+    PAGE = """<html><script>var x='PHARMACIE PIEGE';</script><article>
+    <p><span><strong>Liste des pharmacies du </strong></span><i><u><span>octobre 02 au 09 novembre 2026</span></u></i></p>
+    <table><thead><tr class="row-1"><th><strong>PHARMACIES</strong></th><th><strong>TELEPHONES</strong></th>
+    <th><strong>EMPLACEMENTS</strong></th></tr></thead><tbody>
+    <tr><td>PHARMACIE CENTRE</td><td>☎22 21 83 30</td><td>ASSIVITO, face WATT</td></tr>
+    <tr><td>PHARMACIE ST JOSEPH</td><td>22 25 74 65</td><td>Bretelle BE KLIKAME</td></tr>
+    <tr><td>PHARMACIE NELLY&#039;S</td><td>9201 11 oo</td><td>Klémé Agokpanou, sur la voie de Ségbé</td></tr>
+    <tr><td>PHARMACIE YESHUA</td><td>98 77 53</td><td>AGOE Vakpossito</td></tr>
+    </tbody></table></article></html>"""
+
+    def setUp(self):
+        self.document = robot.decoder(self.PAGE.encode(), "text/html")
+        self.lignes = robot.extraire_tableau(self.document.lignes)
+
+    def test_tableau(self):
+        self.assertEqual(len(self.lignes), 4)
+        self.assertEqual(self.lignes[0]["adresse"], "ASSIVITO, face WATT")
+        self.assertEqual(self.lignes[2]["nom"], "PHARMACIE NELLY'S")
+
+    def test_periode_dans_balises(self):
+        liste = robot.extraire_sans_ia(self.document.texte, dt.date(2026, 11, 4))
+        self.assertEqual(liste.debut, dt.date(2026, 11, 2))
+
+    def test_fiches(self):
+        annuaire = [{"nom": "Pharmacie du Centre", "quartier": "", "lat": 6.1, "lon": 1.2}]
+        fiches, inconnues = robot.construire_fiches(self.lignes, annuaire)
+        self.assertEqual(inconnues, [])
+        self.assertEqual(fiches[0]["nom"], "Pharmacie Centre")
+        self.assertEqual(fiches[0]["telephone"], "+228 22 21 83 30")
+        self.assertEqual(fiches[0]["quartier"], "Assivito")
+        self.assertEqual(fiches[0]["lat"], 6.1)
+        self.assertEqual(fiches[1]["quartier"], "Bè")
+        self.assertEqual(fiches[2]["telephone"], "+228 92 01 11 00")
+        self.assertEqual(fiches[2]["quartier"], "Klémé")
+        self.assertEqual(fiches[3]["telephone"], "")
+        self.assertIsNone(fiches[3]["lat"])
+
+    def test_page_sans_tableau(self):
+        self.assertEqual(robot.extraire_tableau([["a", "b"]]), [])
+
+
 class Rapprochement(unittest.TestCase):
     def test_variantes(self):
         trouvees, inconnues = robot.rapprocher(

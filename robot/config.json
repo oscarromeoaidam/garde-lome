@@ -1,13 +1,13 @@
 {
-  "demo": true,
+  "demo": false,
   "source": {
-    "nom": "Liste d'exemple",
-    "url": "",
-    "fichier": "sources/exemple-liste.txt"
+    "nom": "INAM, Institut National d'Assurance Maladie du Togo",
+    "url": "https://www.inam.tg/pharmacies-de-garde/",
+    "fichier": ""
   },
   "controles": {
-    "min_pharmacies": 3,
-    "max_pharmacies": 60,
+    "min_pharmacies": 20,
+    "max_pharmacies": 80,
     "duree_max_jours": 14,
     "max_inconnues_pct": 10,
     "variation_max_pct": 50

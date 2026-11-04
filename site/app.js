@@ -46,7 +46,7 @@ function bouton(texte, classe, lien) {
 }
 
 function lienItineraire(p) {
-  const cible = p.lat != null ? `${p.lat},${p.lon}` : `${p.nom} ${p.adresse} Lomé Togo`;
+  const cible = `${p.nom}, ${p.adresse}, Lomé, Togo`;
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cible)}`;
 }
 
@@ -153,9 +153,16 @@ function afficher() {
   if (donnees.mise_a_jour_le) {
     el("maj").textContent = `Mise à jour le ${dateHeure.format(new Date(donnees.mise_a_jour_le))}`;
   }
-  const credits = [donnees.source && `Source de la liste : ${donnees.source}.`];
-  if (donnees.licence_annuaire) credits.push(`Adresses ${donnees.licence_annuaire}.`);
-  el("credits").textContent = credits.filter(Boolean).join(" ");
+  const credits = el("credits");
+  if (donnees.source_url) {
+    const lien = document.createElement("a");
+    lien.href = donnees.source_url;
+    lien.textContent = donnees.source;
+    credits.append("Source de la liste : ", lien, ". Ce site indépendant n'est pas géré par cette institution.");
+  } else if (donnees.source) {
+    credits.append(`Source de la liste : ${donnees.source}.`);
+  }
+  if (donnees.licence_annuaire) credits.append(` Positions ${donnees.licence_annuaire}.`);
 
   if (donnees.statut !== "confirme") {
     montrerDoute();
