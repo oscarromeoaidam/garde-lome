@@ -3,19 +3,19 @@
   "source": "INAM, Institut National d'Assurance Maladie du Togo",
   "source_url": "https://www.inam.tg/pharmacies-de-garde/",
   "licence_annuaire": "© contributeurs OpenStreetMap, licence ODbL",
-  "verifie_le": "2026-11-04T12:18:40+00:00",
+  "verifie_le": "2026-11-04T12:19:49+00:00",
   "statut": "confirme",
   "debut": "2026-11-02",
   "fin": "2026-11-09",
-  "mise_a_jour_le": "2026-11-04T12:18:40+00:00",
+  "mise_a_jour_le": "2026-11-04T12:19:49+00:00",
   "pharmacies": [
     {
       "nom": "Pharmacie 31eme Arrondissement",
       "quartier": "",
       "adresse": "Bd. du 13 Janvier, près de l'Immeuble FIATA",
       "telephone": "+228 22 21 52 27",
-      "lat": 6.1351465,
-      "lon": 1.2319409
+      "lat": null,
+      "lon": null
     },
     {
       "nom": "Pharmacie Actuelle",
@@ -283,7 +283,7 @@
     },
     {
       "nom": "Pharmacie Ossan",
-      "quartier": "",
+      "quartier": "Avédji",
       "adresse": "Carrefour AVEDZI, face Ets LA LIMOUSINE",
       "telephone": "+228 70 40 44 25",
       "lat": 6.2010778,
@@ -347,7 +347,7 @@
     },
     {
       "nom": "Pharmacie Takoe",
-      "quartier": "",
+      "quartier": "Zongo",
       "adresse": "Avant la station CAP ESSO de Zongo (côté opposé)",
       "telephone": "+228 91 55 18 04",
       "lat": null,
