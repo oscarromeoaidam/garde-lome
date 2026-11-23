@@ -3,427 +3,419 @@
   "source": "INAM, Institut National d'Assurance Maladie du Togo",
   "source_url": "https://www.inam.tg/pharmacies-de-garde/",
   "licence_annuaire": "© contributeurs OpenStreetMap, licence ODbL",
-  "verifie_le": "2026-11-22T23:38:50+00:00",
+  "verifie_le": "2026-11-23T18:16:12+00:00",
   "statut": "confirme",
-  "debut": "2026-11-16",
-  "fin": "2026-11-23",
-  "mise_a_jour_le": "2026-11-16T15:52:15+00:00",
+  "debut": "2026-11-23",
+  "fin": "2026-11-30",
+  "mise_a_jour_le": "2026-11-23T18:16:12+00:00",
   "pharmacies": [
     {
-      "nom": "Pharmacie A Dieu la Gloire",
-      "quartier": "Légbassito",
-      "adresse": "Marché de Légbassito, à côté de la Poste, sur le grand contournement",
-      "telephone": "+228 93 26 36 00",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie Amessiame-be",
-      "quartier": "Bè",
-      "adresse": "Marché de Bè",
-      "telephone": "+228 96 32 97 60",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie Aureole",
+      "nom": "Pharmacie Abraham",
       "quartier": "Agoè",
-      "adresse": "Agoè Trokpossimé au carrefour cam GP à 50 m de l'EPP du camp GP",
-      "telephone": "+228 70 70 98 98",
-      "lat": null,
-      "lon": null
+      "adresse": "AGOE - Logopé Kossigan",
+      "telephone": "+228 22 50 10 00",
+      "lat": 6.2346078,
+      "lon": 1.1753172
     },
     {
-      "nom": "Pharmacie Betania",
-      "quartier": "",
-      "adresse": "Rue Sito, Totsi-Glenkomé non loin de la salle des Témoins de Jéhovah",
-      "telephone": "+228 96 80 10 11",
-      "lat": 6.1924973,
-      "lon": 1.1814503
-    },
-    {
-      "nom": "Pharmacie Bethel",
-      "quartier": "Adidogomé",
-      "adresse": "ADIDOGOME Soviépé, bd du 30 Août, face OraBank et Banque Atlantique",
-      "telephone": "+228 22 25 23 70",
-      "lat": 6.1755861,
-      "lon": 1.1809121
-    },
-    {
-      "nom": "Pharmacie Bien Etre",
-      "quartier": "Hédzranawoé",
-      "adresse": "100, bd du haho, hedzranawoe, à côté de la station d'essence total",
-      "telephone": "+228 22 26 45 16",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie Bon Secours",
-      "quartier": "",
-      "adresse": "Rue du Grand Collège du Plateau - Cassablanca",
-      "telephone": "+228 70 45 76 74",
-      "lat": 6.1534769,
-      "lon": 1.2036048
-    },
-    {
-      "nom": "Pharmacie Boulevard",
-      "quartier": "",
-      "adresse": "Bd. Du 13 Janv. Doulassamé",
-      "telephone": "+228 22 21 65 49",
-      "lat": 6.1361355,
-      "lon": 1.2280208
-    },
-    {
-      "nom": "Pharmacie des Ecoles",
-      "quartier": "",
-      "adresse": "Face Lycée Techni ue Adido omé et rès du CEG, Route de Kpalimé",
-      "telephone": "+228 22 51 75 75",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie des Roses",
+      "nom": "Pharmacie Adonaï",
       "quartier": "Agoè",
-      "adresse": "AGOE - Vakpossito, près de l'entreprise de l'Union",
-      "telephone": "",
-      "lat": 6.2205598,
-      "lon": 1.1698952
+      "adresse": "Face Hôtel la Plantation à Agoè-Nyivé",
+      "telephone": "+228 22 50 04 05",
+      "lat": 6.2319049,
+      "lon": 1.2104777
     },
     {
-      "nom": "Pharmacie El-nissi",
-      "quartier": "Apédokoè",
-      "adresse": "Rte Lomé-Kpalimé, carrefour Apédokoè-Gbomamé à 200 m de la station total d'Apédokoè",
-      "telephone": "+228 99 73 39 32",
-      "lat": 6.2129413,
-      "lon": 1.1338098
-    },
-    {
-      "nom": "Pharmacie El-shadai",
+      "nom": "Pharmacie Adouni",
       "quartier": "",
-      "adresse": "Face Ecole Théologie ESTAO",
-      "telephone": "+228 22 51 44 25",
-      "lat": 6.1694828,
-      "lon": 1.2031998
-    },
-    {
-      "nom": "Pharmacie El-shammah",
-      "quartier": "",
-      "adresse": "Sise à Amadahomé à côté de la Maison des Jeunes 04BP: 1004",
-      "telephone": "+228 70 43 25 85",
-      "lat": 6.2090184,
-      "lon": 1.1598501
-    },
-    {
-      "nom": "Pharmacie Emmaüs",
-      "quartier": "",
-      "adresse": "Sur la route de Mission Tové à côté du bar Solidarité",
-      "telephone": "+228 70 40 25 40",
-      "lat": 6.2358935,
-      "lon": 1.1940329
-    },
-    {
-      "nom": "Pharmacie Enouli",
-      "quartier": "",
-      "adresse": "Derrière la gare routière d'A balePedogan 05 BP 633",
-      "telephone": "+228 22 55 86 46",
-      "lat": 6.2005233,
-      "lon": 1.2014823
-    },
-    {
-      "nom": "Pharmacie Espace Vie",
-      "quartier": "Agoè",
-      "adresse": "AGOE Logopé non loin de place de Loisir BKS 2",
-      "telephone": "+228 99 85 89 07",
+      "adresse": "Vakpossito-Logokomé, près du carrefour AISED",
+      "telephone": "+228 70 39 39 39",
       "lat": null,
       "lon": null
     },
     {
-      "nom": "Pharmacie Eva",
-      "quartier": "Sanguéra",
-      "adresse": "SANGUERA, Klikamé, Non loin du T-OIL",
-      "telephone": "+228 92 16 32 32",
-      "lat": 6.2458357,
-      "lon": 1.1144944
-    },
-    {
-      "nom": "Pharmacie Forever",
+      "nom": "Pharmacie Aeroport",
       "quartier": "",
-      "adresse": "01 BP 4884 Lomé I -TOGO-52 Avenue des Kondona, face Garage Central Administratif",
-      "telephone": "+228 22 26 11 77",
-      "lat": 6.1597269,
-      "lon": 1.2261792
+      "adresse": "Rte de l'Aéroport SITO",
+      "telephone": "+228 22 26 21 22",
+      "lat": 6.1689721,
+      "lon": 1.245859
     },
     {
-      "nom": "Pharmacie Greenrx",
-      "quartier": "Bè",
-      "adresse": "Se be dans l'immeuble Mabiz Plaza Non loin du Rond point Douane",
-      "telephone": "+228 92 96 19 19",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie Hanoukope",
+      "nom": "Pharmacie Akofa",
       "quartier": "",
-      "adresse": "Avenue de la Nouvelle Marche, Immeuble Radio Kanal FM",
-      "telephone": "+228 70 49 96 63",
-      "lat": 6.1370338,
-      "lon": 1.2189602
+      "adresse": "Av. Maman N' Danida Amoutivé",
+      "telephone": "+228 22 21 00 97",
+      "lat": 6.1431126,
+      "lon": 1.2299573
     },
     {
-      "nom": "Pharmacie Hosanna",
-      "quartier": "",
-      "adresse": "Carrefour Sagbado-Sémékonawo, en face de la station service SANOL",
-      "telephone": "+228 97 77 69 59",
-      "lat": 6.1940704,
-      "lon": 1.1379555
-    },
-    {
-      "nom": "Pharmacie Hygea",
-      "quartier": "Baguida",
-      "adresse": "Face Lycée publique de Baguida sur la rte d'Afanoukopé",
-      "telephone": "+228 99 27 36 36",
-      "lat": 6.17841,
-      "lon": 1.329995
-    },
-    {
-      "nom": "Pharmacie Kelegougan",
-      "quartier": "Agoè",
-      "adresse": "AGOE-Kelegougan,Voie du contournement, à I 00 m de la station TOTAL Kelegougan et du bar Obrigado",
-      "telephone": "+228 92 95 38 38",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie Koboyo",
-      "quartier": "",
-      "adresse": "DAVIE, rte de la Nationale No 1 avant le péage de Davié en face de la Station Sanol",
-      "telephone": "+228 93 70 48 12",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie Kodjoviakope",
-      "quartier": "",
-      "adresse": "Avenue Duisbour",
-      "telephone": "+228 22 21 89 90",
-      "lat": 6.1216541,
-      "lon": 1.2093005
-    },
-    {
-      "nom": "Pharmacie la Grace",
-      "quartier": "Agoè",
-      "adresse": "Près de l'Auber e Sahara avant la Station SUN AGIP Agoè",
-      "telephone": "+228 22 25 91 65",
-      "lat": 6.219508,
-      "lon": 1.2091379
-    },
-    {
-      "nom": "Pharmacie la Ruche",
-      "quartier": "Attiégou",
-      "adresse": "Attiégou derrière la clôture de l'aéroport voie menant au Grand Contournement, non loin de l'école les Savoirs",
-      "telephone": "+228 91 54 16 16",
-      "lat": 6.1889722,
-      "lon": 1.2720809
-    },
-    {
-      "nom": "Pharmacie le Galien",
-      "quartier": "",
-      "adresse": "Rue Pavée d'Adidoadin",
-      "telephone": "+228 22 51 71 71",
-      "lat": 6.2013791,
-      "lon": 1.1882347
-    },
-    {
-      "nom": "Pharmacie le Rocher",
-      "quartier": "Agoè",
-      "adresse": "Agoè zongo, sur la route national NO 1, près du terrain de jeu de golf",
-      "telephone": "+228 92 30 06 56",
-      "lat": 6.2463084,
-      "lon": 1.2092832
-    },
-    {
-      "nom": "Pharmacie Liberation",
-      "quartier": "",
-      "adresse": "Avenue Libération Prolongée",
-      "telephone": "+228 22 22 25 25",
-      "lat": 6.1535266,
-      "lon": 1.2171496
-    },
-    {
-      "nom": "Pharmacie Lumen",
-      "quartier": "Djagblé",
-      "adresse": "DJAGBLE, En face de l'EPP (Plakomé)",
-      "telephone": "+228 70 41 68 36",
-      "lat": 6.1571711,
-      "lon": 1.2020895
-    },
-    {
-      "nom": "Pharmacie Magnificat",
-      "quartier": "Adidogomé",
-      "adresse": "Adidogomé yokoè Agblégan, rue de lapampa à 100 m du palais royal de Yokoè",
-      "telephone": "+228 70 44 51 59",
-      "lat": 6.1793429,
-      "lon": 1.1508203
-    },
-    {
-      "nom": "Pharmacie Mathilda",
-      "quartier": "",
-      "adresse": "Route PATASSE - Lomégan - ODEF",
-      "telephone": "+228 93 02 52 12",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie Mawunyo",
-      "quartier": "Agoè",
-      "adresse": "AGOE-Sogbossito, route de Mission TOVE en face de la station OANDO",
-      "telephone": "+228 70 42 34 64",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie N.d. de la Trinite",
-      "quartier": "",
-      "adresse": "Sise au 20 boulevard de la Paix à Super Taco",
-      "telephone": "+228 98 46 50 88",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie Notre Dame de Lourdes",
-      "quartier": "",
-      "adresse": "Carrefour Maison Blanche en allant à \"Deux Lions\" en face de STAM",
-      "telephone": "+228 70 44 01 01",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie O Grain D'or",
-      "quartier": "",
-      "adresse": "Ahadji - Kpota, Rue Carrefour Zorrobar, Grand Contournement, Lomé",
-      "telephone": "",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie Pharmacie 2000",
-      "quartier": "Bè",
-      "adresse": "BE KPOTA près du Marché Dzifa",
-      "telephone": "+228 96 37 94 25",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie Port",
-      "quartier": "",
-      "adresse": "Face Hôtel Sarakawa",
-      "telephone": "",
-      "lat": null,
-      "lon": null
-    },
-    {
-      "nom": "Pharmacie Raoudha",
-      "quartier": "Hédzranawoé",
-      "adresse": "Située au 4495 Boulevard Zio Hédzranawoe, derrière TOGO 2000",
-      "telephone": "+228 91 61 33 32",
-      "lat": 6.1945897,
-      "lon": 1.2539059
-    },
-    {
-      "nom": "Pharmacie Regina Pacis",
+      "nom": "Pharmacie Amen",
       "quartier": "Adétikopé",
-      "adresse": "ADETIKOPE, Rte National NO I près du bar Sous l'Antenne",
-      "telephone": "+228 70 45 98 58",
-      "lat": 6.3191268,
-      "lon": 1.2171957
-    },
-    {
-      "nom": "Pharmacie Robertson",
-      "quartier": "Nyékonakpoè",
-      "adresse": "607, Avenue François MITTERAND Nyékonakpoè",
-      "telephone": "+228 22 22 28 41",
+      "adresse": "Marché Adétikopé, près de l'Eglise Catholique Christ-Roi",
+      "telephone": "+228 90 88 55 88",
       "lat": null,
       "lon": null
     },
     {
-      "nom": "Pharmacie Saint Sylvestre",
+      "nom": "Pharmacie Ave Maria",
+      "quartier": "Tokoin",
+      "adresse": "Face ENSF (Ecole Nationale des Sages Femmes) près du CHU Tokoin",
+      "telephone": "+228 22 22 33 01",
+      "lat": 6.1439701,
+      "lon": 1.2061066
+    },
+    {
+      "nom": "Pharmacie Besda",
+      "quartier": "Adidogomé",
+      "adresse": "Route de Kpalimé , Adidogomé Aménopé 04 BP : 604 Lomé - TOGO",
+      "telephone": "+228 22 51 05 29",
+      "lat": 6.1956179,
+      "lon": 1.1541753
+    },
+    {
+      "nom": "Pharmacie Bon Pasteur",
       "quartier": "",
-      "adresse": "Zanguéra,Quartier Sangamé, non loin du rond- point Sangamé",
-      "telephone": "+228 93 51 51 98",
+      "adresse": "44 Av. de la libération, en face de Brother Home",
+      "telephone": "+228 22 21 13 67",
+      "lat": 6.1290342,
+      "lon": 1.224335
+    },
+    {
+      "nom": "Pharmacie Christ-roi",
+      "quartier": "",
+      "adresse": "Kagomé",
+      "telephone": "+228 22 27 46 66",
       "lat": null,
       "lon": null
     },
     {
-      "nom": "Pharmacie Sainte Marie",
-      "quartier": "Djagblé",
-      "adresse": "DJAGBLE, Non loin du marché d'Avéta (Adja Adoté-kopé)",
-      "telephone": "+228 92 85 97 94",
-      "lat": 6.148443,
-      "lon": 1.2188809
+      "nom": "Pharmacie Conseil",
+      "quartier": "",
+      "adresse": "Carrefour du CEG Sagbado Logoté",
+      "telephone": "+228 93 10 92 92",
+      "lat": 6.1936831,
+      "lon": 1.1304653
     },
     {
-      "nom": "Pharmacie Santa Madonna",
+      "nom": "Pharmacie de la Cite",
+      "quartier": "",
+      "adresse": "Boulevard du 30 Août - BP 8461 - LOME - TOGO",
+      "telephone": "+228 22 25 01 25",
+      "lat": 6.1711741,
+      "lon": 1.1900577
+    },
+    {
+      "nom": "Pharmacie Delali",
+      "quartier": "",
+      "adresse": "En face de l'hôpital de Cacavéli à 100 m entre la Cour d'Appel et le marché de Cacavéli",
+      "telephone": "+228 93 64 53 72",
+      "lat": 6.2078133,
+      "lon": 1.1952131
+    },
+    {
+      "nom": "Pharmacie Denis",
+      "quartier": "Agoè",
+      "adresse": "AGOE Kové, Carrefour Kpogli",
+      "telephone": "+228 93 08 46 40",
+      "lat": 6.2476092,
+      "lon": 1.1617103
+    },
+    {
+      "nom": "Pharmacie des Apotres",
+      "quartier": "",
+      "adresse": "49, Bd Moboutou Sese Seko, Akodésséwa, non loin du Centre de Formation CAMA",
+      "telephone": "+228 70 45 38 05",
+      "lat": 6.1461027,
+      "lon": 1.2663128
+    },
+    {
+      "nom": "Pharmacie des Lilas",
       "quartier": "Kégué",
-      "adresse": "Kégué, face maison Kader Coubadja & Eglise catholique Ste Thèrèse",
-      "telephone": "+228 70 01 03 03",
+      "adresse": "123HDN, 07 Route de Kégué Boulevard Jean Paul 11 prolongé",
+      "telephone": "+228 96 16 55 89",
+      "lat": 6.1830548,
+      "lon": 1.2354178
+    },
+    {
+      "nom": "Pharmacie Dodji",
+      "quartier": "Bè",
+      "adresse": "Sé bé Akato, immeuble Akato la e non loin de l'E lise Catholique d'Akato",
+      "telephone": "+228 70 29 16 77",
       "lat": null,
       "lon": null
     },
     {
-      "nom": "Pharmacie Sepopo",
+      "nom": "Pharmacie Eclair",
+      "quartier": "Bè",
+      "adresse": "Rue Avenou, Bè Ahligo, dans le prolongement du Marché de Ahligo",
+      "telephone": "+228 96 80 09 06",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Epiphania",
+      "quartier": "Adidogomé",
+      "adresse": "Rue de La Pam a, Carrefour AGBEMADON, ADIDOGOME",
+      "telephone": "+228 70 40 10 52",
+      "lat": 6.1805044,
+      "lon": 1.1634997
+    },
+    {
+      "nom": "Pharmacie Esperance",
+      "quartier": "Nyékonakpoè",
+      "adresse": "Av F.J. STRAUSS, Face Ecole Française Nyékonakpoè (Rue Adjololo)",
+      "telephone": "+228 22 21 01 28",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Excellence",
+      "quartier": "Agoè",
+      "adresse": "AGOE Démakpoé Voie CEDEAO",
+      "telephone": "+228 22 50 24 47",
+      "lat": 6.241401,
+      "lon": 1.2012058
+    },
+    {
+      "nom": "Pharmacie Gbossime",
       "quartier": "",
-      "adresse": "ADAKPAME grand contournement, rond point Sawleto non loin de la station Somayaf",
-      "telephone": "+228 70 34 65 65",
+      "adresse": "376, Boulevard de la Kara 08 B.P.: 80859 Lomé-TOGO",
+      "telephone": "+228 22 22 50 50",
+      "lat": 6.1594338,
+      "lon": 1.2056622
+    },
+    {
+      "nom": "Pharmacie Internationale",
+      "quartier": "Hédzranawoé",
+      "adresse": "Sise Marché de Hédzranawoé \"Assiyéyé\", Boulevard du Haho",
+      "telephone": "+228 22 26 89 94",
       "lat": null,
       "lon": null
     },
     {
-      "nom": "Pharmacie St Esprit",
+      "nom": "Pharmacie Iris",
+      "quartier": "",
+      "adresse": "Amadahomé, Imm. Havon, A 500m de la station CAP, Rue 50 m à coté des Casses Auto",
+      "telephone": "+228 91 68 48 04",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Klokpe",
+      "quartier": "",
+      "adresse": "Derrière la Foire Togo 2000",
+      "telephone": "+228 96 80 10 03",
+      "lat": 6.191227,
+      "lon": 1.260828
+    },
+    {
+      "nom": "Pharmacie la Patience",
+      "quartier": "Djagblé",
+      "adresse": "DJAGBLE, A 300 mètres du CMS (Ayokléfé)",
+      "telephone": "+228 70 05 23 39",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie la Shekinah",
       "quartier": "Agoè",
-      "adresse": "Sur la bretelle Agoè-Nyivé Kégué, Face au CEG Agoè-Est",
-      "telephone": "+228 70 40 29 06",
+      "adresse": "AGOE-NYIVE Qt Atiomé carrefour Amadenta",
+      "telephone": "+228 93 33 92 05",
       "lat": null,
       "lon": null
     },
     {
-      "nom": "Pharmacie St Philippe",
-      "quartier": "Sanguéra",
-      "adresse": "SANGUERA, Rte Lomé -Kpalimé près de la Station service OANDO",
-      "telephone": "+228 90 67 33 24",
-      "lat": null,
-      "lon": null
+      "nom": "Pharmacie Laus Deo",
+      "quartier": "",
+      "adresse": "Rte de Léo 2000, face Clinique Besthesda- quartier Adidoadin",
+      "telephone": "+228 22 25 15 05",
+      "lat": 6.2070435,
+      "lon": 1.1831321
     },
     {
-      "nom": "Pharmacie Verseau",
+      "nom": "Pharmacie le Destin",
       "quartier": "Baguida",
-      "adresse": "Près de la maison Bateau Baguida",
-      "telephone": "+228 90 01 90 29",
-      "lat": 6.1668171,
-      "lon": 1.3345793
-    },
-    {
-      "nom": "Pharmacie Volontas Dei",
-      "quartier": "Avédji",
-      "adresse": "Avédji, Carrefour \"SUN CITY\", face à l'ancien bar Sun Ci",
-      "telephone": "+228 70 42 23 60",
-      "lat": 6.2021934,
-      "lon": 1.1731723
-    },
-    {
-      "nom": "Pharmacie Zilidji",
-      "quartier": "Agoè",
-      "adresse": "Derrière le marche d'agoè zongo",
-      "telephone": "+228 92 61 66 08",
+      "adresse": "A côté de l'Agence ECOBANK de Baguida",
+      "telephone": "+228 70 41 15 41",
       "lat": null,
       "lon": null
     },
     {
-      "nom": "Pharmacie Zossime",
+      "nom": "Pharmacie M'ba",
       "quartier": "Agoè",
-      "adresse": "AGOE - Zossimé, près du marché",
-      "telephone": "+228 22 55 43 52",
-      "lat": 6.2333568,
-      "lon": 1.1489943
+      "adresse": "Agoè-Légbassito. Route de Mission Tové, 300 mètres après le marché de Légbassito",
+      "telephone": "+228 70 27 81 81",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Maëlys",
+      "quartier": "",
+      "adresse": "1688, Bd Malfakassa - Kpota en Face de NETADI",
+      "telephone": "+228 22 27 60 19",
+      "lat": 6.1679518,
+      "lon": 1.2754774
+    },
+    {
+      "nom": "Pharmacie Maina",
+      "quartier": "Avédji",
+      "adresse": "Quartier AVEDJI, non loin de Hôpital Source de Vie, à 500m du Carrefour Y",
+      "telephone": "+228 70 43 65 34",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Misericorde",
+      "quartier": "Bè",
+      "adresse": "BE-KPOTA à 300M de NISSAN, A côté de la Station MRS",
+      "telephone": "+228 96 80 09 45",
+      "lat": 6.1568116,
+      "lon": 1.2526204
+    },
+    {
+      "nom": "Pharmacie Nabine",
+      "quartier": "Agoè",
+      "adresse": "Sise à Agoè Anomé dit Plateau (Route du Bar Plateau)",
+      "telephone": "+228 93 36 26 26",
+      "lat": 6.2182105,
+      "lon": 1.18285
+    },
+    {
+      "nom": "Pharmacie Nation",
+      "quartier": "",
+      "adresse": "Face ancien Marché TOTSI",
+      "telephone": "+228 22 25 99 65",
+      "lat": 6.1922583,
+      "lon": 1.1910253
+    },
+    {
+      "nom": "Pharmacie Nelly's",
+      "quartier": "Klémé",
+      "adresse": "Klémé Agokpanou, non loin du château d'eau, sur la voie de Ségbé à Sanguéra",
+      "telephone": "+228 92 01 11 00",
+      "lat": 6.2143127,
+      "lon": 1.1121838
+    },
+    {
+      "nom": "Pharmacie Observance",
+      "quartier": "Sogbossito",
+      "adresse": "SOGBOSSITO, en face de la station Total Energies à Côté du Camp BIR",
+      "telephone": "+228 22 50 48 60",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Point E",
+      "quartier": "Djidjolé",
+      "adresse": "506, rue 129 Aflao Gakli (Kiniti Gomè), à Djidjolé dans le von de la pharmacie Djidjolé",
+      "telephone": "+228 22 51 91 71",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Providence",
+      "quartier": "",
+      "adresse": "Bd. Jean Paul 11",
+      "telephone": "+228 91 14 88 88",
+      "lat": 6.1606822,
+      "lon": 1.2338052
+    },
+    {
+      "nom": "Pharmacie Sag'biba",
+      "quartier": "Agoè",
+      "adresse": "AGOE-Nanegbe à côté de la station T-Oil",
+      "telephone": "+228 91 83 87 83",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Saint Pio",
+      "quartier": "",
+      "adresse": "KLOBATEME, non loin du CMS Klobatèmé et près du complexe scolaire Le Bon Samaritain",
+      "telephone": "+228 93 40 40 40",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Sala Houbeida",
+      "quartier": "Agoè",
+      "adresse": "Agoè Kelegougan (Koffi Panou, Carrefour O' queens)",
+      "telephone": "+228 91 91 15 35",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Sanguera",
+      "quartier": "Sanguéra",
+      "adresse": "Près du Iycée Sanguera",
+      "telephone": "+228 70 42 80 80",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Takoe",
+      "quartier": "Zongo",
+      "adresse": "Avant la station CAP ESSO de Zongo (côté opposé)",
+      "telephone": "+228 91 55 18 04",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Triomphe",
+      "quartier": "",
+      "adresse": "Quartier Bokpokor, Route contournement, 300 m de carrefour kpala",
+      "telephone": "+228 93 25 80 36",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Univers-sante",
+      "quartier": "",
+      "adresse": "Bd. GNASSINGBE Eyadéma, Cité OUA face à l'entrée du CHU-CAMPUS",
+      "telephone": "",
+      "lat": 6.1825881,
+      "lon": 1.2145868
+    },
+    {
+      "nom": "Pharmacie Veronique",
+      "quartier": "",
+      "adresse": "Avépozo en face de l'école nationale de gendarmerie D'Avépozo",
+      "telephone": "+228 92 03 40 40",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Verte",
+      "quartier": "",
+      "adresse": "Face Ecole du Parti Klikamé",
+      "telephone": "+228 22 25 03 26",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Vitaflore",
+      "quartier": "Agoè",
+      "adresse": "Agoè Vakpossito à 100 m de la station Shell Agoè Vakpossito",
+      "telephone": "+228 70 40 22 86",
+      "lat": 6.2220049,
+      "lon": 1.1653079
+    },
+    {
+      "nom": "Pharmacie Vitas",
+      "quartier": "Agoè",
+      "adresse": "Située à Agoè Assiyé é du côté ouest",
+      "telephone": "+228 22 25 63 43",
+      "lat": null,
+      "lon": null
+    },
+    {
+      "nom": "Pharmacie Zongo",
+      "quartier": "",
+      "adresse": "Togblékopé carrefour Hermann entre Orabank et la station Sanol To bléko",
+      "telephone": "+228 70 49 96 55",
+      "lat": null,
+      "lon": null
     }
   ]
 }
